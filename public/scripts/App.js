@@ -1,7 +1,6 @@
 /**
  * Created by Stephen on 2016/4/11.
  */
-
 var dependencies = ['ngAnimate', 'routeConfig', 'ngRoute', 'controllers', 'services', 'directives', 'filters'];
 
 angular.module('myExpress', dependencies);
