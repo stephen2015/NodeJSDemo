@@ -11,7 +11,7 @@ servicesModule.service("LoginService", function ($q, $http) {
         $http({
             method: 'POST',
             url: path,
-            user: user
+            data: {user: user}
         }).success(function (data, status, headers, defaultConfig) {
             deferred.resolve(data);
         }).error(function (data, status, headers, defaultConfig) {

@@ -55,7 +55,16 @@ if (app.get('env') === 'development') {
     });
 }
 // 启动监听端口
-http.createServer(app).listen(app.get('PORT'), function(){
+http.createServer(function (req, res) {
+    if (req.url == '/doLogin' && req.method.toUpperCase() == 'POST') {
+        var postData = "";
+        req.addListener("data", function (data) {
+            postData += data;
+            console.log(postData);
+            res.send('respond with a resource');
+        });
+    }
+}).listen(app.get('PORT'), function () {
     console.log('Express server listening on port ' + app.get('PORT'));
 });
 
