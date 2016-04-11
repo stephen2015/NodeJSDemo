@@ -1,0 +1,33 @@
+
+<!--Created by Stephen on 2016/4/11.-->
+<div data-ng-controller="LoginCtrl">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1 class="text-center">{{title}}</h1>
+      <p class="text-center">Welcome to {{title}}</p>
+    </div>
+    <div class="panel panel-body">
+      <div class="container-fluid">
+        <form class="form-horizontal">
+          <legend>用户登录</legend>
+          <div class="row control-group text-center col-md-offset-4">
+            <label style="width:15%" class="col-md-2">用户名：</label>
+            <div class="controls col-md-2">
+              <input data-ng-model="userName" class="input-xlarge"/>
+            </div>
+          </div><br/>
+          <div class="row control-group text-center col-md-offset-4">
+            <label style="width:15%" class="col-md-2">密码：</label>
+            <div class="controls col-md-2">
+              <input type="password" data-ng-model="password" class="input-xlarge"/>
+            </div>
+          </div><br/>
+          <div class="form-actions col-md-offset-5">
+            <button data-ng-click="doLogin()" class="btn btn-primary col-md-2">登陆</button>
+          </div><br/>
+        </form>
+      </div>
+    </div>
+    <div class="panel panel-footer"></div>
+  </div>
+</div>

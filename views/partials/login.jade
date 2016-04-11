@@ -1,0 +1,24 @@
+//Created by Stephen on 2016/4/11.
+div(data-ng-controller="LoginCtrl")
+    div.panel.panel-default
+        div.panel-heading
+            h1.text-center {{title}}
+            p.text-center Welcome to {{title}}
+        div.panel.panel-body
+            div.container-fluid
+                form.form-horizontal
+                    legend 用户登录
+                    div.row.control-group.text-center.col-md-offset-4
+                        label.col-md-2(style="width:15%") 用户名：
+                        div.controls.col-md-2
+                            input.input-xlarge(data-ng-model="userName")
+                    br
+                    div.row.control-group.text-center.col-md-offset-4
+                        label.col-md-2(style="width:15%") 密码：
+                        div.controls.col-md-2
+                            input.input-xlarge(type="password",data-ng-model="password")
+                    br
+                    div.form-actions.col-md-offset-5
+                        button.btn.btn-primary.col-md-2(data-ng-click="doLogin()") 登陆
+                    br
+        div.panel.panel-footer
