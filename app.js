@@ -8,7 +8,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var routes = require('./routes');
 
 var app = express();
 
@@ -27,10 +26,11 @@ app.use(express.static(path.join(app_root, 'public')));
 app.use(express.static(path.join(app_root, 'bower_components')));
 app.use(express.static(path.join(app_root, 'views')));
 
-//路由
-app.use('/doLogin', require('./routes/index'));
+//路由文件映射
+var login = require('./routes/login');
+app.use('/doLogin', login);
 
-// catch 404 and forward to error handler
+// 异常处理  catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
@@ -55,16 +55,7 @@ if (app.get('env') === 'development') {
     });
 }
 // 启动监听端口
-http.createServer(function (req, res) {
-    if (req.url == '/doLogin' && req.method.toUpperCase() == 'POST') {
-        var postData = "";
-        req.addListener("data", function (data) {
-            postData += data;
-            console.log(postData);
-            res.send('respond with a resource');
-        });
-    }
-}).listen(app.get('PORT'), function () {
+http.createServer(app).listen(app.get('PORT'), function () {
     console.log('Express server listening on port ' + app.get('PORT'));
 });
 
