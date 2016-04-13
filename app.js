@@ -30,7 +30,7 @@ app.use(express.static(path.join(app_root, 'bower_components')));
 app.use(express.static(path.join(app_root, 'views')));
 
 //路由文件映射
-var login = require('./routes/login');
+var login = require('./routes/index');
 app.use('/doLogin', login);
 
 // 异常处理  catch 404 and forward to error handler
