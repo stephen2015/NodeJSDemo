@@ -31,7 +31,9 @@ app.use(express.static(path.join(app_root, 'views')));
 
 //路由文件映射
 var login = require('./routes/login');
+var city = require('./routes/city');
 app.use('/doLogin', login);
+app.use('/getCity', city);
 
 // 异常处理  catch 404 and forward to error handler
 app.use(function (req, res, next) {

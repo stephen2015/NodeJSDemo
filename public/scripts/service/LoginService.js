@@ -4,8 +4,23 @@
 servicesModule.service("LoginService", function ($q, $http) {
     this.headers = {'Accept': 'application/json', 'Content-Type': 'application/json'};
     this.defaultConfig = {headers: this.headers};
-
-    this.doLogin = function (user) {
+    //GET请求发送参数方法
+    this.doLogin = function (userName) {
+        var deferred = $q.defer();
+        var path = "/doLogin";
+        $http({
+            method: 'GET',
+            url: path,
+            params: {userName: userName}
+        }).success(function (data, status, headers, defaultConfig) {
+            deferred.resolve(data);
+        }).error(function (data, status, headers, defaultConfig) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+    //POST请求发送参数方法
+    this.loginPost = function (user) {
         var deferred = $q.defer();
         var path = "/doLogin";
         $http({
@@ -19,4 +34,19 @@ servicesModule.service("LoginService", function ($q, $http) {
         });
         return deferred.promise;
     };
+
+    this.getCityInfo = function (id) {
+        var deferred = $q.defer();
+        var path = "/getCity";
+        $http({
+            method: 'GET',
+            url: path,
+            params: {id: id}
+        }).success(function (data, status, headers, defaultConfig) {
+            deferred.resolve(data);
+        }).error(function (data, status, headers, defaultConfig) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    }
 });
