@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
     console.log(req.query);
     console.log(req._parsedOriginalUrl.path);
     var path = req._parsedOriginalUrl.path;
-    console.log(path.split('/')[2]);
+    console.log("param: userName = " + path.split('/')[2]);
     res.send("dddddddddddddddd");
 });
 
