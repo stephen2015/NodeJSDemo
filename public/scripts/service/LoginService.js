@@ -19,6 +19,19 @@ servicesModule.service("LoginService", function ($q, $http) {
         });
         return deferred.promise;
     };
+    this.doLoginParam = function (userName) {
+        var deferred = $q.defer();
+        var path = "/doLogin/" + userName;
+        $http({
+            method: 'GET',
+            url: path
+        }).success(function (data, status, headers, defaultConfig) {
+            deferred.resolve(data);
+        }).error(function (data, status, headers, defaultConfig) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
     //POST请求发送参数方法
     this.loginPost = function (user) {
         var deferred = $q.defer();

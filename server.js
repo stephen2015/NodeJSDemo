@@ -34,6 +34,7 @@ var login = require('./routes/login');
 var city = require('./routes/city');
 app.use('/doLogin', login);
 app.use('/getCity', city);
+app.use('/doLogin/:userName',login);
 
 // 异常处理  catch 404 and forward to error handler
 app.use(function (req, res, next) {
