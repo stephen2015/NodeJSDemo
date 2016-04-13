@@ -14,7 +14,7 @@ controllersModule.controller("LoginCtrl", function ($scope, LoginService) {
         if ($scope.userName && $scope.password) {
             user.userName = $scope.userName;
             user.password = $scope.password;
-            LoginService.doLoginParam(user.userName)
+            LoginService.doLogin(user.userName)
                 .then(function (data) {
                     console.log(data);
                 });

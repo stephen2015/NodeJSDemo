@@ -11,6 +11,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+//mount-routes 根据路径来自动加载路由，让开发更简单
+var mount = require('mount-routes');
 
 var app = express();
 
@@ -30,11 +32,14 @@ app.use(express.static(path.join(app_root, 'bower_components')));
 app.use(express.static(path.join(app_root, 'views')));
 
 //路由文件映射
-var login = require('./routes/login');
-var city = require('./routes/city');
-app.use('/doLogin', login);
-app.use('/getCity', city);
-app.use('/doLogin/:userName',login);
+// var login = require('./routes/login');
+// var city = require('./routes/city');
+// app.use('/doLogin', login);
+// app.use('/getCity', city);
+// app.use('/doLogin/:userName',login);
+
+//自动映射路由，但是路径方法名必须和路由器action名一致
+mount(app, app_root + '/routes');
 
 // 异常处理  catch 404 and forward to error handler
 app.use(function (req, res, next) {

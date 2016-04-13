@@ -7,7 +7,7 @@ servicesModule.service("LoginService", function ($q, $http) {
     //GET请求发送参数方法
     this.doLogin = function (userName) {
         var deferred = $q.defer();
-        var path = "/doLogin";
+        var path = "/login";
         $http({
             method: 'GET',
             url: path,
@@ -21,7 +21,7 @@ servicesModule.service("LoginService", function ($q, $http) {
     };
     this.doLoginParam = function (userName) {
         var deferred = $q.defer();
-        var path = "/doLogin/" + userName;
+        var path = "/login/" + userName;
         $http({
             method: 'GET',
             url: path
@@ -35,7 +35,7 @@ servicesModule.service("LoginService", function ($q, $http) {
     //POST请求发送参数方法
     this.loginPost = function (user) {
         var deferred = $q.defer();
-        var path = "/doLogin";
+        var path = "/login";
         $http({
             method: 'POST',
             url: path,
