@@ -1,3 +1,6 @@
+/**
+ * Created by Stephen on 2016/4/13.
+ */
 //模块依赖
 var app_root = __dirname;
 var express = require('express');
@@ -60,3 +63,4 @@ http.createServer(app).listen(app.get('PORT'), function () {
 });
 
 module.exports = app;
+
