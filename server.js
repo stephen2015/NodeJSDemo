@@ -38,7 +38,7 @@ app.use('/login', login);
 app.use('/getCity', city);
 app.use('/login',login);
 
-//自动映射路由，但是路径方法名必须和路由器action名一致
+//自动映射路由，但是路径'/'后的方法名必须和路由器action文件名一致
 // mount(app, app_root + '/routes');
 
 // 异常处理  catch 404 and forward to error handler

@@ -48,7 +48,7 @@ servicesModule.service("LoginService", function ($q, $http) {
         });
         return deferred.promise;
     };
-
+    //数据库连接获取数据
     this.getCityInfo = function (id) {
         var deferred = $q.defer();
         var path = "/getCity";
