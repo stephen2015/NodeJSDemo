@@ -13,6 +13,8 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 //mount-routes 根据路径来自动加载路由，让开发更简单
 var mount = require('mount-routes');
+//node 异常处理捕获
+var domain = require('domain');
 
 var app = express();
 
@@ -36,10 +38,28 @@ var login = require('./routes/login');
 var city = require('./routes/city');
 app.use('/login', login);
 app.use('/getCity', city);
-app.use('/login',login);
+app.use('/login', login);
 
 //自动映射路由，但是路径'/'后的方法名必须和路由器action文件名一致
 // mount(app, app_root + '/routes');
+
+
+//引入一个domain的中间件，将每一个请求都包裹在一个独立的domain中  domain来处理异常
+app.use(function (req, res, next) {
+    var d = domain.create();
+    //监听domain的错误事件
+    d.on('error', function (err) {
+        logger.error(err);
+        res.statusCode = 500;
+        res.json({success: false, message: '服务器异常'});
+        d.dispose();
+    });
+
+    d.add(req);
+    d.add(res);
+    d.run(next);
+});
+
 
 // 异常处理  catch 404 and forward to error handler
 app.use(function (req, res, next) {
