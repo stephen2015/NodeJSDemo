@@ -49,11 +49,14 @@ app.use(function (req, res, next) {
     var d = domain.create();
     //监听domain的错误事件
     d.on('error', function (err) {
-        logger.error(err);
+        console.log(err);
         res.statusCode = 500;
         res.json({success: false, message: '服务器异常'});
         d.dispose();
     });
+    //添加e和timer异常监测
+    d.add(e);
+    d.add(timer);
 
     d.add(req);
     d.add(res);
